@@ -39,17 +39,19 @@ class ConsultationTypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('number_of_slots')
-                    ->searchable(),
+                    ->sortable()
+                    ->toggleable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
