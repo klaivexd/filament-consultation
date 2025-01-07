@@ -1,0 +1,51 @@
+models:
+  ConsultationCategory:
+    id: increments
+    title: string
+    description: text
+    number_of_slots: unsignedInteger
+    consultation_type_id: unsignedInteger
+    work_schedule_id: unsignedInteger nullable
+    relationships:
+      belongsTo: ConsultationType
+      belongsToMany: WorkScheduleConsultationCategory
+
+  ConsultationType:
+    id: increments
+    title: string
+    description: text
+    consultation_category_id: unsignedInteger nullable
+    relationships:
+      hasMany: ConsultationCategory
+
+  Staff:
+    id: increments
+    first_name: string
+    last_name: string
+    title: string
+    email: string unique
+    mobile_phone: string
+    phone: integer nullable
+    work_schedule_id: unsignedInteger nullable
+    relationships:
+      hasMany: WorkSchedule
+
+  WorkSchedule:
+    id: increments
+    date_from: date
+    date_until: date nullable
+    day_of_week: tinyInteger
+    time_from: time
+    time_until: time
+    staff_id: unsignedInteger
+    work_schedule_consultation_category_id: unsignedInteger
+    relationships:
+      belongsTo: Staff
+      hasMany: WorkScheduleConsultationCategory
+
+  WorkScheduleConsultationCategory:
+    id: increments
+    work_schedule_id: unsignedInteger
+    consultation_category_id: unsignedInteger
+    relationships:
+      belongsTo: WorkSchedule,ConsultationCategory

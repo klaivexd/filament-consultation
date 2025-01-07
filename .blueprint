@@ -1,0 +1,24 @@
+created:
+    - database/factories/ConsultationCategoryFactory.php
+    - database/factories/ConsultationTypeFactory.php
+    - database/factories/StaffFactory.php
+    - database/factories/WorkScheduleFactory.php
+    - database/factories/WorkScheduleConsultationCategoryFactory.php
+    - database/migrations/2025_01_07_103414_create_consultation_categories_table.php
+    - database/migrations/2025_01_07_103415_create_consultation_types_table.php
+    - database/migrations/2025_01_07_103416_create_staff_table.php
+    - database/migrations/2025_01_07_103417_create_work_schedules_table.php
+    - database/migrations/2025_01_07_103418_create_work_schedule_consultation_categories_table.php
+    - database/migrations/2025_01_07_103419_create_consultation_category_work_schedule_consultation_category_table.php
+    - app/Models/ConsultationCategory.php
+    - app/Models/ConsultationType.php
+    - app/Models/Staff.php
+    - app/Models/WorkSchedule.php
+    - app/Models/WorkScheduleConsultationCategory.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    ConsultationCategory: { id: increments, title: string, description: text, number_of_slots: unsignedInteger, consultation_type_id: unsignedInteger, work_schedule_id: 'unsignedInteger nullable', relationships: { belongsTo: ConsultationType, belongsToMany: WorkScheduleConsultationCategory } }
+    ConsultationType: { id: increments, title: string, description: text, consultation_category_id: 'unsignedInteger nullable', relationships: { hasMany: ConsultationCategory } }
+    Staff: { id: increments, first_name: string, last_name: string, title: string, email: 'string unique', mobile_phone: string, phone: 'integer nullable', work_schedule_id: 'unsignedInteger nullable', relationships: { hasMany: WorkSchedule } }
+    WorkSchedule: { id: increments, date_from: date, date_until: 'date nullable', day_of_week: tinyInteger, time_from: time, time_until: time, staff_id: unsignedInteger, work_schedule_consultation_category_id: unsignedInteger, relationships: { belongsTo: Staff, hasMany: WorkScheduleConsultationCategory } }
+    WorkScheduleConsultationCategory: { id: increments, work_schedule_id: unsignedInteger, consultation_category_id: unsignedInteger, relationships: { belongsTo: 'WorkSchedule,ConsultationCategory' } }
