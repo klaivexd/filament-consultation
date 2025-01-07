@@ -29,8 +29,6 @@ class ConsultationTypeResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('description')
                     ->required(),
-                Forms\Components\TextInput::make('number_of_slots')
-                    ->required(),
             ]);
     }
 
@@ -42,9 +40,6 @@ class ConsultationTypeResource extends Resource
                     ->sortable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->sortable()
-                    ->toggleable(),
-                Tables\Columns\TextColumn::make('number_of_slots')
                     ->sortable()
                     ->toggleable(),
             ])

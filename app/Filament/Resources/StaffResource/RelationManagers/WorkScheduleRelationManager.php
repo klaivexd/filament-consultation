@@ -38,11 +38,8 @@ class WorkScheduleRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('date_until')
                     ->label('Valid until')
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('work_schedule_consultation_category_id')
+                Tables\Columns\TextColumn::make('staff.title')
                     ->label('Consultation Category')
-                    ->getStateUsing(function ($record) {
-                        return $record->workScheduleConsultationCategories->consultationCategory->title ?? 'N/A';
-                    })
                     ->sortable()
                     ->searchable(),
             ])
