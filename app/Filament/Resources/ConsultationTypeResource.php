@@ -27,7 +27,7 @@ class ConsultationTypeResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\TextInput::make('description')
+                Forms\Components\TextArea::make('description')
                     ->required(),
             ]);
     }

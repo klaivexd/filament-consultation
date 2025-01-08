@@ -62,11 +62,11 @@ class WorkSchedule extends Model
     {
         return [
             DatePicker::make('date_from')
-                ->label('Valid from (Date)')
+                ->label('Date from')
                 ->required(),
             DatePicker::make('date_until')
-                ->label('Valid until (Date)')
-                ->required(),
+                ->label('Date until')
+                ->nullable(),
             Select::make('day_of_week')
                 ->label('Day of Week')
                 ->options([
@@ -78,12 +78,14 @@ class WorkSchedule extends Model
                     5 => 'Friday',
                     6 => 'Saturday',
                 ])
+                ->default(1)
+                ->disablePlaceholderSelection()
                 ->required(),
             TimePicker::make('time_from')
-                ->label('Valid from (Time)')
+                ->label('Time from')
                 ->required(),
             TimePicker::make('time_until')
-                ->label('Valid until (Time)')
+                ->label('Time until')
                 ->required(),
             Select::make('staff_id')
                 ->hidden(function () use ($staffId) {

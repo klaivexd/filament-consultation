@@ -28,18 +28,20 @@ class ConsultationCategoryResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('consultation_type_id')
+                    ->label('Consultation Type')
+                    ->options(ConsultationType::all()->pluck('title', 'id'))
+                    ->required(),
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\TextArea::make('description')
                     ->required(),
                 Forms\Components\TextInput::make('number_of_slots')
                     ->label('Number of Slots')
                     ->numeric()
+                    ->integer()
+                    ->minValue(0)
                     ->required(),
-                Forms\Components\Select::make('consultation_type_id')
-                    ->label('Consultation Type')
-                    ->options(ConsultationType::all()->pluck('title', 'id'))
-                    ->nullable(),
             ]);
     }
 
@@ -74,14 +76,6 @@ class ConsultationCategoryResource extends Resource
                 ]),
             ]);
     }
-
-    // public static function infolist(Infolist $infolist): Infolist
-    // {
-    //     return $infolist
-    //         ->schema([
-                
-    //         ])
-    // }
 
     public static function getRelations(): array
     {
