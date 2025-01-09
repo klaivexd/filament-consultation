@@ -28,6 +28,6 @@ class WorkScheduleConsultationCategory extends Model
 
     public function consultationCategory(): BelongsTo
     {
-        return $this->belongsTo(ConsultationCategory::class, 'consultation_category_id');
+        return $this->belongsTo(ConsultationCategory::class);
     }
 }

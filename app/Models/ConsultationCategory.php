@@ -16,6 +16,7 @@ class ConsultationCategory extends Model
         'description',
         'number_of_slots',
         'consultation_type_id',
+        'parent_consultation_category',
         'work_schedule_id',
     ];
 

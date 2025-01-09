@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedInteger('number_of_slots');
             $table->foreignId('consultation_type_id');
+            $table->string('parent_consultation_category')->nullable();
             $table->unsignedInteger('work_schedule_id')->nullable();
             $table->timestamps();
         });

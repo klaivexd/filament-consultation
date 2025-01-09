@@ -5,6 +5,7 @@ models:
     description: text
     number_of_slots: unsignedInteger
     consultation_type_id: unsignedInteger
+    parent_consultation_category: foreignId nullable
     work_schedule_id: unsignedInteger nullable
     relationships:
       belongsTo: ConsultationType

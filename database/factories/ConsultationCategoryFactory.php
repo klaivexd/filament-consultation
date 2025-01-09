@@ -26,6 +26,7 @@ class ConsultationCategoryFactory extends Factory
             'description' => $this->faker->text(),
             'number_of_slots' => $this->faker->randomNumber(),
             'consultation_type_id' => ConsultationType::factory(),
+            'parent_consultation_category' => $this->faker->word(),
             'work_schedule_id' => $this->faker->randomNumber(),
         ];
     }

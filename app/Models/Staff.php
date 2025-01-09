@@ -25,7 +25,7 @@ class Staff extends Model
         'work_schedule_id' => 'integer',
     ];
 
-    public function workSchedule(): HasMany
+    public function workSchedules(): HasMany
     {
         return $this->hasMany(WorkSchedule::class);
     }

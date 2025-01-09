@@ -7,7 +7,9 @@ use App\Models\ConsultationCategory;
 use App\Models\ConsultationType;
 use Filament\Actions\ViewAction;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -28,10 +30,28 @@ class ConsultationCategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('consultation_type_id')
+                Select::make('consultation_type_id')
                     ->label('Consultation Type')
                     ->options(ConsultationType::all()->pluck('title', 'id'))
-                    ->required(),
+                    ->required()
+                    ->reactive()
+                    ->live(),
+
+                Select::make('parent_consultation_category')
+                    ->label('Parent Consultation Category')
+                    ->options(
+                        fn(Get $get): array =>
+                        $get('consultation_type_id')
+                            ? ConsultationCategory::where('consultation_type_id', $get('consultation_type_id'))
+                            ->whereNull('parent_consultation_category')
+                            ->pluck('title', 'id')
+                            ->toArray()
+                            : []
+                    )
+                    ->required()
+                    ->hidden(fn(Get $get) => !$get('consultation_type_id'))
+                    ->reactive(),
+
                 Forms\Components\TextInput::make('title')
                     ->required(),
                 Forms\Components\TextArea::make('description')
