@@ -4,12 +4,12 @@ created:
     - database/factories/StaffFactory.php
     - database/factories/WorkScheduleFactory.php
     - database/factories/WorkScheduleConsultationCategoryFactory.php
-    - database/migrations/2025_01_09_113858_create_consultation_categories_table.php
-    - database/migrations/2025_01_09_113859_create_consultation_types_table.php
-    - database/migrations/2025_01_09_113900_create_staff_table.php
-    - database/migrations/2025_01_09_113901_create_work_schedules_table.php
-    - database/migrations/2025_01_09_113902_create_work_schedule_consultation_categories_table.php
-    - database/migrations/2025_01_09_113903_create_consultation_category_work_schedule_consultation_category_table.php
+    - database/migrations/2025_01_09_153710_create_consultation_categories_table.php
+    - database/migrations/2025_01_09_153711_create_consultation_types_table.php
+    - database/migrations/2025_01_09_153712_create_staff_table.php
+    - database/migrations/2025_01_09_153713_create_work_schedules_table.php
+    - database/migrations/2025_01_09_153714_create_work_schedule_consultation_categories_table.php
+    - database/migrations/2025_01_09_153715_create_consultation_category_work_schedule_consultation_category_table.php
     - app/Models/ConsultationCategory.php
     - app/Models/ConsultationType.php
     - app/Models/Staff.php

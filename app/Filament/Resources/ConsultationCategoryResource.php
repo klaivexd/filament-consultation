@@ -5,16 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ConsultationCategoryResource\Pages;
 use App\Models\ConsultationCategory;
 use App\Models\ConsultationType;
-use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\BulkActionGroup;
 

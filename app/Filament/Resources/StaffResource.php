@@ -29,21 +29,34 @@ class StaffResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('first_name')
-                    ->required(),
-                Forms\Components\TextInput::make('last_name')
-                    ->required(),
-                Forms\Components\TextInput::make('title')
-                    ->required(),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required(),
-                Forms\Components\TextInput::make('mobile_phone')
-                    ->tel()
-                    ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->numeric(),
+                Forms\Components\Grid::make(6)
+                    ->schema([
+                        Forms\Components\Section::make('Personal Information')
+                            ->columns(3)
+                            ->columnSpan(6)
+                            ->schema([
+                                Forms\Components\TextInput::make('first_name')
+                                    ->required(),
+                                Forms\Components\TextInput::make('last_name')
+                                    ->required(),
+                                Forms\Components\TextInput::make('title')
+                                    ->required(),
+                            ]),
+                        Forms\Components\Section::make('Contact Information')
+                            ->columns(3)
+                            ->columnSpan(6)
+                            ->schema([
+                                Forms\Components\TextInput::make('email')
+                                    ->email()
+                                    ->required(),
+                                Forms\Components\TextInput::make('mobile_phone')
+                                    ->tel()
+                                    ->required(),
+                                Forms\Components\TextInput::make('phone')
+                                    ->tel()
+                                    ->numeric(),
+                            ]),
+                    ]),
             ]);
     }
 
